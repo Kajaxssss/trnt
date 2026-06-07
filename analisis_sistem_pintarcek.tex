@@ -1,0 +1,62 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[indonesian]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{Analisis Arsitektur dan Fungsionalitas Sistem Web \textbf{Pintarcek.com}}
+\author{Dokumentasi Sistem}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Dokumen ini menyajikan analisis komprehensif mengenai arsitektur, desain antarmuka, dan integrasi backend dari sistem \textit{landing page} Pintarcek.com. Pintarcek beroperasi sebagai platform \textit{drop-servicing} untuk layanan pengecekan orisinalitas dokumen akademik (Turnitin). Analisis ini mencakup lapisan \textit{frontend} berbasis Next.js, manajemen state dan pengiriman data, hingga konfigurasi \textit{Visual Design System}.
+\end{abstract}
+
+\section{Pendahuluan}
+Pintarcek.com dirancang sebagai aplikasi web \textit{Single Page Application} (SPA) modern yang mengedepankan performa tinggi, aksesibilitas visual, dan pengalaman pengguna (\textit{User Experience}) yang mulus. Tujuan utama platform ini adalah menjembatani pengguna akhir dengan penyedia layanan pengecekan plagiasi secara anonim dan otomatis tanpa harus bersentuhan dengan sistem backend konvensional yang rumit.
+
+\section{Arsitektur Teknologi}
+Sistem ini dibangun di atas tumpukan teknologi (\textit{Tech Stack}) modern yang kokoh dan dapat diskalakan:
+\begin{itemize}
+    \item \textbf{Framework Utama:} Next.js (App Router) dengan TypeScript yang memberikan tipe-keamanan (\textit{type-safety}) yang ketat.
+    \item \textbf{Styling:} Tailwind CSS v4 untuk utilitas gaya \textit{mobile-first} dan responsivitas absolut di seluruh rasio layar.
+    \item \textbf{Animasi:} Framer Motion untuk mengimplementasikan transisi berbasis fisika pegas (\textit{spring-physics}) pada halaman dan menu navigasi.
+    \item \textbf{Ikonografi:} Lucide React yang memelihara estetika vektor murni tanpa elemen emoji/emotikon informal.
+    \item \textbf{Backend / API:} Google Apps Script yang berfungsi sebagai \textit{endpoint} penerima file dalam struktur JSON.
+\end{itemize}
+
+\section{Visual Design System (VDS)}
+Sistem UI baru saja dirombak total menggunakan pendekatan \textit{High-Contrast} yang mencerminkan ketegasan, profesionalisme, dan visibilitas tingkat tinggi layaknya portal perusahaan IT elit.
+\begin{itemize}
+    \item \textbf{Latar Dasar (Canvas):} Putih bersih (\#FFFFFF) dipadukan dengan aksen \textit{Slate tint} (\#F8FAFC) untuk memisahkan blok-blok informasi.
+    \item \textbf{Identitas Utama (Primary/Typography):} Royal Blue (\#0035AD) digunakan pada semua tajuk, teks tubuh utama, batas form (\textit{focus rings}), dan latar komponen kemitraan.
+    \item \textbf{Aksen dan Sorotan (CTA):} Bright Yellow (\#F4E11B) difungsikan secara taktis pada elemen kritis seperti teks tombol, pemicu visual ilustrasi, dan status harga terpopuler.
+\end{itemize}
+
+\section{Arsitektur Komponen UI}
+Aplikasi dipecah secara modular (\textit{Component-based architecture}):
+\begin{enumerate}
+    \item \textbf{Hero.tsx:} Menyajikan visual spanduk (\textit{banner}) berbasis \textit{flat vector} lebar yang digabungkan ke kanvas putih tanpa bingkai untuk memberikan efek ilusi mulus (\textit{seamless float}).
+    \item \textbf{Partner.tsx:} Mewakili pilar B2B dengan latar gradien dinamis (\texttt{from-[\#0035AD]} ke \texttt{to-[\#002270]}) yang menyajikan skema \textit{White-Label Reseller}.
+    \item \textbf{Pricing.tsx \textendash{} Features.tsx \textendash{} FAQ.tsx:} Menopang konversi edukasional dengan implementasi interaktif seperti fungsi geser (*swipe*) kartu di perangkat mobile.
+\end{enumerate}
+
+\section{Alur Integrasi Data \& Intake System}
+Fungsi interaksi terpenting terletak di \texttt{IntakeForm.tsx}, yang mengorganisasikan sistem unggah tanpa peladen (*serverless upload*):
+\begin{itemize}
+    \item \textbf{Validasi Klien:} Memfilter ukuran file maksimum 20MB dan memastikan ekstensi berbasis dokumen Microsoft Word/PDF terverifikasi di klien.
+    \item \textbf{Base64 Encoding:} Mengubah file blob menjadi struktur string Base64 via \texttt{FileReader} untuk mengakomodasi HTTP POST murni melalui mode \texttt{no-cors}.
+    \item \textbf{Manajemen State Payload:} Membundel variabel \textit{name, whatsapp, title, paket, fileMimeType,} dan \textit{fileBase64} ke dalam satu JSON.
+    \item \textbf{WhatsApp Auto-Redirection:} Mekanisme pamungkas yang tidak kalah vital. Segera setelah konfirmasi form di-render \textit{success}, sistem memicu eksekusi API \textit{window.open} ke protokol \texttt{wa.me} menggunakan parameter teks pesanan yang dirakit secara terstruktur (Nama, Paket, dan Judul), menciptakan konversi administratif yang cepat.
+\end{itemize}
+
+\section{Kesimpulan}
+Sistem Pintarcek.com membuktikan bahwa perpaduan ekosistem React modern (Next.js), integrasi layanan \textit{micro} dari Google Workspace, dan kedisiplinan perancangan antarmuka visual mampu menciptakan aplikasi bisnis *drop-servicing* berskala \textit{enterprise} yang ringan, hemat biaya infrastruktur, dan berorientasi konversi.
+
+\end{document}
