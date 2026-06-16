@@ -13,8 +13,8 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "pintarcek | Validasi Orisinalitas Akademik",
-  description: "Layanan cek kemiripan teks menggunakan sistem Turnitin Premium dengan jaminan No-Repository.",
+  title: "pintarcek | Cek Plagiasi Turnitin No Repository",
+  description: "Menggunakan sistem Turnitin resmi untuk mengecek similarity tanpa menyimpan dokumen ke database. Aman, akurat, dan tersedia 24 jam.",
 };
 
 export default function RootLayout({
