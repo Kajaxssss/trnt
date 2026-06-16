@@ -13,7 +13,7 @@ export default function Hero() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="font-serif text-4xl md:text-6xl lg:text-7xl font-semibold text-[#0035AD] max-w-4xl leading-tight md:leading-[1.1] text-balance mb-6"
         >
-          Validasi Orisinalitas Akademik Secara Instan Tanpa Jejak.
+          Cek Turnitin No Repository, Hasil Keluar Cepat.
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -21,8 +21,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
           className="text-base md:text-lg text-[#0035AD]/80 max-w-2xl text-balance"
         >
-          Layanan cek kemiripan teks menggunakan sistem Turnitin Premium dengan
-          jaminan No-Repository. File aman, proses 15 menit selesai.
+          Menggunakan sistem Turnitin resmi untuk mengecek similarity tanpa menyimpan dokumen ke database. Aman, akurat, dan tersedia 24 jam.
         </motion.p>
       </div>
 
